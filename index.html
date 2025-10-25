@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Next Word Game</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #c8e6ff;
+      text-align: center;
+      margin: 0;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 60px;
+      color: purple;
+      margin-bottom: 40px;
+    }
+    #message {
+      font-size: 24px;
+      color: darkblue;
+      margin-bottom: 50px;
+    }
+    button {
+      background-color: orange;
+      color: white;
+      font-size: 32px;
+      border: none;
+      padding: 20px 60px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="word">Click “Next Word”!</h1>
+  <p id="message">Tap the button to begin!</p>
+  <button onclick="nextWord()">Next Word</button>
+
+  <script>
+    const words = ["his", "her", "an", "would", "know", "some", "could", "does",
+      "them", "other", "than", "only", "after", "our", "well", "walrus",
+      "should", "want", "any", "many", "grandma", "grandpa", "ear",
+      "oh", "yeah", "yes", "thank", "here", "light", "money", "nose",
+      "real", "really", "okay", "tell", "thing", "lunch", "much"];
+
+    function nextWord() {
+      const randomWord = words[Math.floor(Math.random() * words.length)];
+      document.getElementById("word").textContent = randomWord;
+      document.getElementById("message").textContent = "Great! Here's another word!";
+    }
+  </script>
+</body>
+</html>
