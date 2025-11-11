@@ -237,8 +237,8 @@
       void pointsDisplay.offsetWidth;
       pointsDisplay.classList.add("pop");
 
-      // Rainbow flash every 10 points
-      if (points % 10 === 0) {
+      // Rainbow flash every 5 points
+      if (points % 5 === 0) {
         pointsDisplay.classList.add("rainbow");
         setTimeout(() => pointsDisplay.classList.remove("rainbow"), 3000);
       }
@@ -290,6 +290,7 @@
 
 </body>
 </html>
+
 
 
 
