@@ -216,7 +216,7 @@
 "they", "then", "even", "when", "were",
 "live"                   
                   ];
-    let points = 0;
+    let points = -1;
 
     const fireworkColors = [
       "red", "orange", "yellow", "lime", "cyan", "blue", "magenta",
@@ -243,8 +243,8 @@
         setTimeout(() => pointsDisplay.classList.remove("rainbow"), 3000);
       }
 
-      // Fireworks every 20 points
-      if (points % 20 === 0) {
+      // Fireworks every 10 points
+      if (points % 10 === 0) {
         createCenterFireworks(3); // multiple bursts for effect
       }
     }
@@ -290,6 +290,7 @@
 
 </body>
 </html>
+
 
 
 
