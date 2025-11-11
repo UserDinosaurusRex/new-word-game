@@ -15,7 +15,9 @@
       text-align: center;
       margin: 0;
       padding-top: 100px;
-      overflow-x: hidden;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
     }
 
     h1 {
@@ -37,6 +39,7 @@
       margin-bottom: 50px;
       transition: transform 0.2s ease;
       position: relative;
+      display: inline-block;
     }
 
     /* Pop animation (every click) */
@@ -45,9 +48,7 @@
       50% { transform: scale(1.5); color: limegreen; }
       100% { transform: scale(1); color: green; }
     }
-    .pop {
-      animation: pop 0.4s ease;
-    }
+    .pop { animation: pop 0.4s ease; }
 
     /* Rainbow animation (every 15 points) */
     @keyframes rainbow {
@@ -60,29 +61,28 @@
       100% { color: violet; }
     }
     .rainbow {
-      animation: rainbow 1s linear 3; /* repeat 3 times */
+      animation: rainbow 1s linear 3;
     }
 
-    /* Sparkle burst (every 25 points) */
+    /* Firework sparkle animation */
     .sparkle {
       position: absolute;
-      top: 50%;
-      left: 50%;
       width: 6px;
       height: 6px;
-      background: gold;
       border-radius: 50%;
-      box-shadow: 0 0 10px 3px gold;
-      animation: sparkle 0.8s ease-out forwards;
+      pointer-events: none;
+      opacity: 1;
+      animation: drift 1.5s ease-out forwards;
+      box-shadow: 0 0 8px 2px currentColor;
     }
 
-    @keyframes sparkle {
+    @keyframes drift {
       0% {
-        transform: scale(1) translate(-50%, -50%);
+        transform: translate(0, 0) scale(1);
         opacity: 1;
       }
       100% {
-        transform: scale(3) translate(-50%, -50%);
+        transform: var(--translate) scale(0.3);
         opacity: 0;
       }
     }
@@ -116,6 +116,11 @@
     const words = ["his", "her", "an", "would", "know", "some", "could", "does", "them", "other", "than", "only"];
     let points = 0;
 
+    const fireworkColors = [
+      "red", "orange", "yellow", "lime", "cyan", "blue", "magenta",
+      "violet", "white", "gold", "deeppink", "aqua"
+    ];
+
     function nextWord() {
       const randomWord = words[Math.floor(Math.random() * words.length)];
       document.getElementById("word").textContent = randomWord;
@@ -125,45 +130,64 @@
       const pointsDisplay = document.getElementById("points");
       pointsDisplay.textContent = "POINTS!!: " + points;
 
-      // Always trigger pop animation
+      // Pop animation
       pointsDisplay.classList.remove("pop");
       void pointsDisplay.offsetWidth;
       pointsDisplay.classList.add("pop");
 
-      // Rainbow every 15 points
+      // Rainbow flash every 15 points
       if (points % 15 === 0) {
         pointsDisplay.classList.add("rainbow");
         setTimeout(() => pointsDisplay.classList.remove("rainbow"), 3000);
       }
 
-      // Sparkle every 25 points
+      // Fireworks every 25 points
       if (points % 25 === 0) {
-        createSparkles(pointsDisplay, 15); // 15 sparkles
+        createCenterFireworks(3); // multiple bursts for effect
       }
     }
 
-    function createSparkles(container, count) {
+    function createCenterFireworks(bursts = 1) {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      for (let b = 0; b < bursts; b++) {
+        const burstX = screenWidth / 2 + (Math.random() - 0.5) * 200;
+        const burstY = screenHeight / 2 + (Math.random() - 0.5) * 150;
+
+        createFireworkSparkles(burstX, burstY, 35);
+      }
+    }
+
+    function createFireworkSparkles(x, y, count) {
       for (let i = 0; i < count; i++) {
         const sparkle = document.createElement("div");
         sparkle.classList.add("sparkle");
-        container.appendChild(sparkle);
 
-        // Randomize sparkle direction
+        sparkle.style.left = `${x}px`;
+        sparkle.style.top = `${y}px`;
+
+        sparkle.style.color = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+        sparkle.style.background = sparkle.style.color;
+
         const angle = Math.random() * 2 * Math.PI;
-        const distance = 60 + Math.random() * 40;
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
+        const distance = 80 + Math.random() * 120;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+        sparkle.style.setProperty("--translate", `translate(${dx}px, ${dy}px)`);
 
-        sparkle.style.transform = `translate(${x}px, ${y}px) scale(1)`;
         sparkle.style.animationDelay = `${Math.random() * 0.2}s`;
+        sparkle.style.width = sparkle.style.height = `${4 + Math.random() * 4}px`;
 
-        // Remove sparkle after animation
-        setTimeout(() => sparkle.remove(), 800);
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 1600);
       }
     }
   </script>
 
 </body>
 </html>
+
 
 
