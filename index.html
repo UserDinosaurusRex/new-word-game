@@ -5,10 +5,10 @@
   <!-- Sets the character encoding to UTF-8 for proper text display -->
   <meta charset="UTF-8">
 
-  <!-- Sets the title of the webpage (appears in browser tab or Home Screen) -->	
+  <!-- Sets the title of the webpage (appears in browser tab or Home Screen) -->
   <title>Next Word Game</title>
 
-  <!-- Ensures the page scales properly on mobile devices -->	
+  <!-- Ensures the page scales properly on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <!-- Enables full-screen mode when added to iPhone Home Screen -->
@@ -19,118 +19,56 @@
 
   <!-- CSS styling for the page -->
   <style>
-    /* Styles the entire page body */	  
+    /* Styles the entire page body */
     body {
-      font-family: sans-serif;		/* Sets the font for all text */
-      background-color: #c8e6ff;    /* Light blue background */
-      text-align: center;			/* Center all text horizontally */
-      margin: 0;					/* Remove default margins */
-      padding-top: 100px;			/* Adds space at the top */
-      overflow: hidden;
-      height: 100vh;
-      position: relative;
+      font-family: sans-serif;     /* Sets the font for all text */
+      background-color: #c8e6ff;   /* Light blue background */
+      text-align: center;           /* Center all text horizontally */
+      margin: 0;                    /* Remove default margins */
+      padding-top: 100px;           /* Adds space at the top */
     }
 
     /* Styles the main word heading */
     h1 {
-      font-size: 60px;				/* Large font size for the word */
-      color: purple;				/* Purple text color */
-      margin-bottom: 40px;			/* Space below the heading */
-      transition: color 0.3s ease;
+      font-size: 60px;              /* Large font size for the word */
+      color: purple;                /* Purple text color */
+      margin-bottom: 40px;          /* Space below the heading */
     }
 
-    /* Styles the message paragraph below the word */	  
+    /* Styles the message paragraph below the word */
     #message {
-      font-size: 24px;				/* Medium font size for message */
-      color: darkblue;				/* Dark blue text color */
-      margin-bottom: 30px;			/* Space below the message */
+      font-size: 24px;              /* Medium font size for message */
+      color: darkblue;              /* Dark blue text color */
+      margin-bottom: 50px;          /* Space below the message */
     }
 
-    #points {
-      font-size: 28px;
-      color: green;
-      font-weight: bold;
-      margin-bottom: 50px;
-      transition: transform 0.2s ease;
-    }
-
-    /* Pop animation for the points */
-    @keyframes pop {
-      0% { transform: scale(1); color: green; }
-      50% { transform: scale(1.5); color: limegreen; }
-      100% { transform: scale(1); color: green; }
-    }
-    .pop { animation: pop 0.4s ease; }
-
-    /* Rainbow text animation */
-    @keyframes rainbow {
-      0% { color: red; }
-      16% { color: orange; }
-      32% { color: yellow; }
-      48% { color: green; }
-      64% { color: blue; }
-      80% { color: indigo; }
-      100% { color: violet; }
-    }
-    .rainbow {
-      animation: rainbow 1s linear 3;
-    }
-
-    /* Firework sparkles */
-    .sparkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 1;
-      animation: drift 1.5s ease-out forwards;
-      box-shadow: 0 0 8px 2px currentColor;
-    }
-
-    @keyframes drift {
-      0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: var(--translate) scale(0.3);
-        opacity: 0;
-      }
-    }
-
-    /* Styles the Next Word button */	  
+    /* Styles the Next Word button */
     button {
-      background-color: orange;		/* Button background color */
-      color: white;					/* Button text color */
-      font-size: 32px;				/* Large text for easy tapping */
-      border: none;					/* Remove default button border */
-      padding: 20px 60px;			/* Space inside the button */
-      border-radius: 20px;			/* Rounded corners */
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: darkorange;
+      background-color: orange;      /* Button background color */
+      color: white;                  /* Button text color */
+      font-size: 32px;               /* Large text for easy tapping */
+      border: none;                  /* Remove default button border */
+      padding: 20px 60px;            /* Space inside the button */
+      border-radius: 20px;           /* Rounded corners */
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Heading that displays the current word -->	
+  <!-- Heading that displays the current word -->
   <h1 id="word">Click “Next Word”!</h1>
 
-  <!-- Paragraph for instructions or messages -->	
+  <!-- Paragraph for instructions or messages -->
   <p id="message">Tap the button to begin!</p>
 
-  <p id="points">POINTS!! -1</p>
-
-  <!-- Button that calls the nextWord() function when clicked -->	
+  <!-- Button that calls the nextWord() function when clicked -->
   <button onclick="nextWord()">Next Word</button>
 
-  <!-- JavaScript code controlling game logic -->	
+  <!-- JavaScript code controlling game logic -->
   <script>
+
+
 
     // Array of vocabulary words for the game	  
     const words = ["his", 
@@ -235,104 +173,20 @@
 	  // Array of 4X vocabulary words
 	  "they", "then", "even", "when", "were",
 	  "live"                   
-                  ];  
-    let points = -1;
-//  let wordCount = 0;
+                  ];   
 
-    const fireworkColors = [
-      "red", "orange", "yellow", "lime", "cyan", "blue", "magenta",
-      "violet", "white", "gold", "deeppink", "aqua"
-    ];
-
-    // Function that picks a random word and updates the page	  
+    // Function that picks a random word and updates the page
     function nextWord() {
-      const wordEl = document.getElementById("word");
-      const messageEl = document.getElementById("message");
-      const pointsDisplay = document.getElementById("points");
-
-      // Select a random index from the words array		
+      // Select a random index from the words array
       const randomWord = words[Math.floor(Math.random() * words.length)];
 
-      // Update the heading with the new random word		
-      wordEl.textContent = randomWord;
+      // Update the heading with the new random word
+      document.getElementById("word").textContent = randomWord;
 
-      // Update the message below the word		
-      messageEl.textContent = "Great! Here's another word!";
-
-      // Count words and trigger rainbow every 5
-//    wordCount++;
-//	  if (points > 0 && (points+1) % 5 === 0) {
-//          wordEl.classList.add("rainbow");
-//          setTimeout(() => wordEl.classList.remove("rainbow"), 3000);
-//        }	
-
-      // Update points
-      points++;
-      pointsDisplay.textContent = "POINTS!! " + points;
-
-      // Pop animation
-      pointsDisplay.classList.remove("pop");
-      void pointsDisplay.offsetWidth;
-      pointsDisplay.classList.add("pop");
-
-      // Fireworks every 5 points
-      if (points > 0 && points % 5 === 0) {
-        createCenterFireworks(10);
-      }		
-    }
-
-    function createCenterFireworks(bursts = 1) {
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
-
-      for (let b = 0; b < bursts; b++) {
-        const burstX = screenWidth / 2 + (Math.random() - 0.5) * 200;
-        const burstY = screenHeight / 2 + (Math.random() - 0.5) * 150;
-
-        createFireworkSparkles(burstX, burstY, 40);
-      }
-    }
-
-    function createFireworkSparkles(x, y, count) {
-      for (let i = 0; i < count; i++) {
-        const sparkle = document.createElement("div");
-        sparkle.classList.add("sparkle");
-
-        sparkle.style.left = `${x}px`;
-        sparkle.style.top = `${y}px`;
-
-        sparkle.style.color = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
-        sparkle.style.background = sparkle.style.color;
-
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = 80 + Math.random() * 120;
-        const dx = Math.cos(angle) * distance;
-        const dy = Math.sin(angle) * distance;
-        sparkle.style.setProperty("--translate", `translate(${dx}px, ${dy}px)`);
-
-        sparkle.style.animationDelay = `${Math.random() * 0.2}s`;
-        sparkle.style.width = sparkle.style.height = `${4 + Math.random() * 4}px`;
-
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 1600);
-      }
+      // Update the message below the word
+      document.getElementById("message").textContent = "Great! Here's another word!";
     }
   </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
