@@ -277,8 +277,8 @@
 
       // Fireworks every 10 points
 	  if (points > 0 && points % 10 === 0) {
-     	  for (let i = 0; i < 4; i++) { // two bursts
-   		   	setTimeout(() => createCenterFireworks(10), i * 1100); // stagger by 1.5s
+     	  for (let i = 0; i < 4; i++) { // four bursts
+   		   	setTimeout(() => createCenterFireworks(10), i * 1500); // stagger by 1.5s
   	  	  }
 	  }		
       
@@ -323,6 +323,7 @@
   </script>
 </body>
 </html>
+
 
 
 
