@@ -261,10 +261,10 @@
 
       // Count words and trigger rainbow every 5
       wordCount++;
-//	  if (points > 0 && (points+1) % 5 === 0) {
-//        wordEl.classList.add("rainbow");
-//        setTimeout(() => wordEl.classList.remove("rainbow"), 3000);
-//      }	
+	  if (points > 0 && (points+1) % 5 === 0) {
+          wordEl.classList.add("rainbow");
+          setTimeout(() => wordEl.classList.remove("rainbow"), 3000);
+        }	
 
       // Update points
       points++;
@@ -276,12 +276,9 @@
       pointsDisplay.classList.add("pop");
 
       // Fireworks every 10 points
-	  if (points > 0 && points % 10 === 0) {
-     	  for (let i = 0; i < 2; i++) { // four bursts
-   		   	setTimeout(() => createCenterFireworks(10), i * 1500); // stagger by 1.5s
-  	  	  }
-	  }		
-      
+      if (points > 0 && points % 10 === 0) {
+        createCenterFireworks(10);
+      }		
     }
 
     function createCenterFireworks(bursts = 1) {
@@ -323,6 +320,7 @@
   </script>
 </body>
 </html>
+
 
 
 
