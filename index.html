@@ -261,10 +261,10 @@
 
       // Count words and trigger rainbow every 5
       wordCount++;
-      if (wordCount % 5 === 0) {
+	  if (points > 0 && points % 5 === 0) {
         wordEl.classList.add("rainbow");
         setTimeout(() => wordEl.classList.remove("rainbow"), 3000);
-      }
+      }	
 
       // Update points
       points++;
@@ -320,6 +320,7 @@
   </script>
 </body>
 </html>
+
 
 
 
