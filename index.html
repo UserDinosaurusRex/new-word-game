@@ -73,7 +73,7 @@
     // Array of vocabulary words for the game	  
     const words = ["his", 
       "her", "an", "would", "know", "some", "could", "does",
-      "them", "other", "than", "only", "after", "our", "well", "walrus",
+      "them", "other", "only", "after", "our", "well", "walrus",
       "should", "want", "any", "many", "grandma", "grandpa", "ear", "full",
       "oh", "yes", "thank", "here", "light", "money", "nose",
       "real", "really", "okay", "tell", "thing", "lunch", "much", "song",
@@ -81,7 +81,7 @@
 	  "child", "course", "hold", "game", "forget", "else", "own", "card",
 	  "four", "second", "yell",	"cool",	"miss", "pick", "word", "joke",
 	  "same", "seem", "drink", "part", "sleep", "tomorrow", "myself",
-	  "number", "somebody", "such",	"yourself", "himself", "herself", "thin",
+	  "number", "somebody", "yourself", "himself", "herself", "thin",
 	  "dinner",	"anyone", "hand", "anyway", "learn", "shut", "town", "thick",
 	  "beautiful", "both", "yet", "save", "sweet", "until", "while", "final",
 	  "send", "also", "six", "seven", "eight", "nine", "ten", "few", "onto",
@@ -94,7 +94,7 @@
 	  "awesome", "sick", "dream", "water", "store", "afraid", "cute", "front",
 	  "ahead", "though", "pretend", "circle", "explore", "neighbor", "grow",
 	  "grew", "grass", "gave", "robin", "gather", "favorite", "orange", "job", 
-	  "stay", "kick", 
+	  "stay", "kick", "came", "same", "clean", "milk", "juice", "honey",
 				   
 
   	  "little", "need", "talk", "something", "great", "way", "man", "hi", 
@@ -112,7 +112,7 @@
       "hope", "next", "once", "probably", "eye", "drive", "book", "hang", "since",			   
       "yesterday", "promise", "math", "add", "animal", "recess", "table", "music", "being", "gold", "old", "trick", "begin",
       "cream", "swing", "chew", "draw", "tired", "park", "funny", "name",
-      "string", "snow", "hard", 
+      "string", "snow", "hard", "tries", "cries", "twenty", "twin",
 
       // 1X vocabulary words (formerly 2x)		
       "nice", "still", "black", "turn", "snack", "fake", "air", "hair", "chair",  
@@ -121,59 +121,63 @@
 
       // 2X vocabulary words (1 of 2)						   
 	  "who", "what", "when", "where", "why", "says", "they", "then", "even", "these", "those", 
-	  "leave", "ever", "mean", "right", "guy", 
+	  "leave", "ever", "mean", "right", "guy", "than", 
 	  "pour", "low", "below", "bright", "done", "drop", "fell", "high", 
 	  "threw", "throw", "lie", "tie", "bread", "dark", "white", "cried", "movie",        
 	  "cheese", "choice", "chase", "choose", "chose", "might", "yeah",
-	  "nothing", "they're", "hole", "read", "there",
+	  "nothing", "they're", "hole", "read", "there", "such",
 	  "guess", "before", "always", "listen", "minute", "actually", "place", 
 	  "live: I live in a house", "bring", "every", "everything", "watch", "guest", "hey", "use", "heat",
 	  "remember", "house", "wrong", "write", "everyone", "late", "care", "heart", 
-	  "another", "someone", "move", "easy", "were",
+	  "another", "someone", "move", "easy", "were", "count",
 	  "whole", "problem", "break", "which", "must", "wear", "dear", 
 	  "buy", "through", "together", "stuff", "three", "ready", "already",
 	  "life", "kind", "anything", "lose", "bear", "share", "going",
-	  "coin", "point", "wood", "busy", "shake", "head", "stories", 
+	  "coin", "point", "wood", "busy", "shake", "head", "stories", "promise",
 	  "surprise", "silly", "early", "scoot", "whose", "check", "found", "everybody",
 	  "stand", "understand", "hour", "change", "most", "almost", "five", "close",	
 	  "finally: after a long time, I finally finished the book", "ago", "important", 				   
 	  "feet", "wheel", "quick", "slow", "quiet", "touch", "smile", "strong", "angry",
 	  "heal", "extra", "heavy", "winter", "spring", "reach", "scary", "fast",		
-	  "space", "excited", "short", "practice", "along", 		
+	  "space", "excited", "short", "practice", "along", "shout", "basket", 		
 	  "their - that is their toy", 				   
 
 	  // Array of 2X vocabulary words (2 of 2)
 	  "who", "what", "when", "where", "why", "says", "they", "then", "even", "these", "those", 
-	  "leave", "ever", "mean", "right", "guy", 
+	  "leave", "ever", "mean", "right", "guy", "than", 
 	  "pour", "low", "below", "bright", "done", "drop", "fell", "high", 
 	  "threw", "throw", "lie", "tie", "bread", "dark", "white", "cried", "movie",        
 	  "cheese", "choice", "chase", "choose", "chose", "might", "yeah",
-	  "nothing", "they're", "hole", "read", "there",
+	  "nothing", "they're", "hole", "read", "there", "such",
 	  "guess", "before", "always", "listen", "minute", "actually", "place", 
 	  "live: I live in a house", "bring", "every", "everything", "watch", "guest", "hey", "use", "heat",
 	  "remember", "house", "wrong", "write", "everyone", "late", "care", "heart", 
-	  "another", "someone", "move", "easy", "were",
+	  "another", "someone", "move", "easy", "were", "count",
 	  "whole", "problem", "break", "which", "must", "wear", "dear", 
 	  "buy", "through", "together", "stuff", "three", "ready", "already",
 	  "life", "kind", "anything", "lose", "bear", "share", "going",
-	  "coin", "point", "wood", "busy", "shake", "head", "stories", 
+	  "coin", "point", "wood", "busy", "shake", "head", "stories", "promise",
 	  "surprise", "silly", "early", "scoot", "whose", "check", "found", "everybody",
 	  "stand", "understand", "hour", "change", "most", "almost", "five", "close",
 	  "finally: after a long time, I finally finished the book", "ago", "important", 			   
 	  "feet", "wheel", "quick", "slow", "quiet", "touch", "smile", "strong", "angry", 
 	  "heal", "extra", "heavy", "winter", "spring", "reach", "scary", "fast",
-	  "space", "excited", "short", "practice", "along", 
+	  "space", "excited", "short", "practice", "along", "shout", "basket",
 	  "their", 		
 
 	  // Array of 3X vocabulary words
-	  "they", "then", "even", "when", "were",
+	  "they", "then", "when", "were",
 	  "guess", "remember", "wrong", "write", "whole", "right", "what", "bread", "lose", "says",
-	  "live: I live in a house", 		
+	  "live: I live in a house", "even", 		
 
 	  // Array of 4X vocabulary words
-	  "they", "then", "even", "when", "were",
-	  "live"                   
-                  ];   
+	  "they", "then", "when", "were",
+	  "live", "even",                  
+	  
+	  // Array of 5X vocabulary words
+	  "they", "then", "when", "were"
+	  
+				  ];   
 
     // Function that picks a random word and updates the page
     function nextWord() {
@@ -190,3 +194,4 @@
 
 </body>
 </html>
+
