@@ -174,7 +174,12 @@
       "guess", "remember", "wrong", "write", "whole", "right", "what", "lose", "says",
       "practice", "busy", "quite", "live", "even"
     ];
-
+    
+    // "Practice most" words - show up about 10x as often as normal words
+    const weight10Words = [
+      "Canada", "Greenland"
+    ];
+    
     // ------------------------------------------------------------------
     // Build one weighted pool from the three lists above. If a word shows
     // up in more than one list, the highest weight it's listed with wins.
@@ -189,7 +194,9 @@
     for (const w of weight3Words) {
       wordWeight.set(w, Math.max(wordWeight.get(w) || 0, 3));
     }
-
+    for (const w of weight10Words) {
+      wordWeight.set(w, Math.max(wordWeight.get(w) || 0, 10));
+    }
     // Turn the Map into a flat list of {word, weight} plus a running total,
     // so we can pick a random word in proportion to its weight.
     const weightedWords = Array.from(wordWeight.entries()).map(([word, weight]) => ({ word, weight }));
