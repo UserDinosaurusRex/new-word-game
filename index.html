@@ -160,8 +160,8 @@
       "life", "kind", "anything", "lose", "bear", "share", "going",
       "coin", "point", "wood", "busy", "shake", "head", "stories", "promise",
       "surprise", "silly", "early", "scoot", "whose", "check", "found", "everybody",
-      "stand", "understand", "hour", "change", "most", "almost", "close",
-      "finally", "ago", "important",
+      "stand", "understand", "hour", "most", "almost", "close",
+      "finally", "ago", 
       "feet", "wheel", "quick", "slow", "quiet", "touch", "smile", "strong", "angry",
       "heal", "extra", "heavy", "winter", "spring", "scary", "fast", "guide", 
       "space", "excited", "short", "practice", "along", "shout", "finger",
@@ -184,7 +184,7 @@
       "elect", "election", "govern", "government", "local", "noodle", "represent", "area",
       "country", "candidate", "sudden", "suddenly", "office", "officer",
       "stairs", "upstairs", "downstairs", "danger", "dangerous", "driver",
-      "pentagon", "hexagon",
+      "pentagon", "hexagon", "spend", 
       "base"
     ];
     
@@ -221,11 +221,16 @@
       "experiment", "large", "belong", "station", "meat", "treat", "forward", "backward", "glasses",
       "taste", "weight", "height", "mail", "two hundred", "boring", "total", "page", "twice",
       "double", "triple", "cousin", "jealous", "planent", "universe", "ourselves", "suggest", "sea",
-      "ocean", "continent", "meal", "popular", "report", "flight",
-      "cone", "pyramid", "cube", "cylinder", "sphere", "rectangle", "triangle", 
+      "ocean", "continent", "meal", "popular", "report", "flight", "spent", "changes", "change", 
+      "cone", "pyramid", "cube", "cylinder", "sphere", "rectangle", "triangle", "important",
+      "attend",
       "involve"
 
-      
+// "Practice most" words - show up about 15x as often as normal words
+    const weight10Words = [
+      "people", "parade", "holiday", "used to be", "speech",
+      "yellow", "butterfly",
+      "involve"      
       
       
       
@@ -247,6 +252,9 @@
     }
     for (const w of weight10Words) {
       wordWeight.set(w, Math.max(wordWeight.get(w) || 0, 10));
+    }
+    for (const w of weight15Words) {
+      wordWeight.set(w, Math.max(wordWeight.get(w) || 0, 15));
     }
     // Turn the Map into a flat list of {word, weight} plus a running total,
     // so we can pick a random word in proportion to its weight.
